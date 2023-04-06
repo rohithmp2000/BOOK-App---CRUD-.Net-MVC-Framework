@@ -1,0 +1,27 @@
+﻿@model List<BookMVC.tblBook>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of all Books</h2>
+
+<table class="table table-bordered table-striped table-hover">
+            <tr>
+                <th>Book Id</th>
+                <th>Book Name</th>
+                <th>Book Author</th>
+                <th>Book Price</th>
+                <th colspan="2"></th>
+            </tr>
+    @foreach (var i in Model)
+            {
+            <tr>
+                <td>@i.book_id</td>
+                <td>@i.book_name</td>
+                <td>@i.book_author</td>
+                <td>@i.book_price</td>
+                <td><div><a href="@Url.Action("Edit","Book", new {@id = i.book_id})" class="btn btn-warning text-dark">Edit</a></div></td>
+                <td><div><a href="@Url.Action("Delete","Book", new {@id = i.book_id})" class="btn btn-danger text-dark" onclick="return confirm('Are you sure you want to delete @i.book_name ?')">Delete</a></div></td>
+            </tr>
+            }
+</table>
